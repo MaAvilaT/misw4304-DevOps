@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request
 from src.blueprints.msvc_management import token_required
 from src.services.email_blacklisting_service import BlacklistedEmailService
 
-email_blacklists_blueprint = Blueprint(name='management', import_name=__name__)
+email_blacklists_blueprint = Blueprint(name='msvc_email_blacklists', import_name=__name__)
 
 
 @email_blacklists_blueprint.route('/blacklists', methods=['POST'])
@@ -11,7 +11,9 @@ email_blacklists_blueprint = Blueprint(name='management', import_name=__name__)
 def create_email_blacklisting():
     json_data = request.get_json()
 
-    if not json_data or len(json_data) != 3:
+    if (not json_data or
+            len(json_data) != 3 or
+            not all(a == b for a, b in zip(json_data.keys(), ['email', 'appUuid', 'blockedReason']))):
         return jsonify({'msg': 'bad request'}), 400
 
     if request.headers.getlist("X-Forwarded-For"):

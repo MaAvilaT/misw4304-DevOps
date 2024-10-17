@@ -1,0 +1,44 @@
+services:
+  email_blacklists:
+    build: msvc-email-blacklists/
+    image: msvc-email-blacklists:v1.0.0
+    ports:
+      - "3000:3000"
+    environment:
+      DB_NAME: email_blacklists
+      DB_HOST: email_blacklists_db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    depends_on:
+      email_blacklists_db:
+        condition: service_healthy
+    networks:
+      - app_net
+#      - email_blacklists_net
+  email_blacklists_db:
+    image: postgres
+    ports:
+      - "3003:3000"
+    environment:
+      POSTGRES_DB: email_blacklists
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 2s
+      timeout: 5s
+      retries: 5
+#    volumes:
+#      - email_blacklists_db_volume:/var/lib/postgresql/data
+    networks:
+      - app_net
+
+#volumes:
+#  email_blacklists_db_volume:
+
+networks:
+  app_net:
+    driver: bridge
+#  email_blacklists_net:
+#    driver: bridge

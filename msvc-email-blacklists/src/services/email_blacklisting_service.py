@@ -24,7 +24,7 @@ class BlacklistedEmailService:
     @staticmethod
     def is_blacklisted(email):
         with open_session() as session:
-            result = session.query(BlacklistedEmail).filter_by(BlacklistedEmail.email == email).first()
+            result = session.query(BlacklistedEmail).filter(BlacklistedEmail.email == email).first()
 
         if not result:
             return 'false', 200
