@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DB_NAME: email_blacklists
+      DB_NAME: email-blacklists
       DB_HOST: email_blacklists_db
       DB_PORT: 5432
       DB_USER: postgres
@@ -21,7 +21,7 @@ services:
     ports:
       - "3003:3000"
     environment:
-      POSTGRES_DB: email_blacklists
+      POSTGRES_DB: email-blacklists
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     healthcheck:
