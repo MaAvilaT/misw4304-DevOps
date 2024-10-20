@@ -11,4 +11,3 @@ app.register_blueprint(management_blueprint)
 app.register_blueprint(email_blacklists_blueprint)
 
 Base.metadata.create_all(engine)
-
