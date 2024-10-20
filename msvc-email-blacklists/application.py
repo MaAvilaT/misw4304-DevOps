@@ -6,7 +6,7 @@ from .blueprints.msvc_management import management_blueprint
 from .database.declarative_base import Base, engine
 
 loaded = load_dotenv('.env.development')
-application = Flask(__name__)
+application = app = Flask(__name__)
 
 application.register_blueprint(management_blueprint)
 application.register_blueprint(email_blacklists_blueprint)
