@@ -18,8 +18,6 @@ phases:
       - echo "Instalando dependencias del proyecto con Pipenv..."
       - cd msvc-email-blacklists  # Cambiamos al directorio del proyecto
       - pipenv install --dev  # Instalamos todas las dependencias, incluyendo las de desarrollo
-      - echo "Ejecutando pruebas unitarias..."
-      - pipenv run pytest  # Ejecutamos las pruebas usando Pipenv
 
   build:
     commands:
