@@ -22,7 +22,7 @@ phases:
   build:
     commands:
       - echo "Ejecutando pruebas unitarias..."
-      - pipenv run pytest  # Ejecutamos las pruebas unitarias
+      - pipenv run pytest --cov=src --cov-report=term-missing tests/  # Ejecutamos las pruebas unitarias
 
   post_build:
     commands:
