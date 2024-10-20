@@ -11,6 +11,6 @@ RUN pip install pipenv
 
 RUN pipenv install --deploy --ignore-pipfile
 
-ENV FLASK_APP=src/main.py
+ENV FLASK_APP=src/application.py
 
 ENTRYPOINT [ "pipenv", "run", "flask", "run", "--host", "0.0.0.0", "--port", "3000" ]
