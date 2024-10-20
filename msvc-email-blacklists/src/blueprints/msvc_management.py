@@ -3,7 +3,7 @@ from functools import wraps
 
 from src.services.authentication_service import AuthenticationService
 
-management_blueprint = Blueprint(name='management', url_prefix='/api/v1', import_name=__name__)
+management_blueprint = Blueprint(name='management', import_name=__name__)
 
 
 def token_required(f):
