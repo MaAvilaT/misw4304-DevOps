@@ -5,9 +5,9 @@ phases:
     runtime-versions:
       python: 3.9  # Cambia a la versión de Python que uses
     commands:
-      - echo "Instalando Pipenv y dependencias del sistema..."
-      - apt-get update -y
-      - apt-get install -y python3-pip python3-venv  # Instalamos pip y venv
+      - echo "Actualizando e instalando herramientas del sistema..."
+      - yum update -y  # yum es el gestor de Amazon Linux
+      - yum install -y python3-pip python3-venv # Instalamos Python y pip
       - pip install --upgrade pip
       - pip install pipenv  # Instalamos Pipenv
 
