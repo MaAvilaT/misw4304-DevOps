@@ -3,7 +3,7 @@ services:
     build: msvc-email-blacklists/
     image: msvc-email-blacklists:v1.0.0
     ports:
-      - "3000:3000"
+      - "5000:5000"
     environment:
       RDS_DB_NAME: email_blacklists
       RDS_HOSTNAME: email_blacklists_db
@@ -19,7 +19,7 @@ services:
   email_blacklists_db:
     image: postgres
     ports:
-      - "3003:3000"
+      - "5003:5000"
     environment:
       POSTGRES_DB: email_blacklists
       POSTGRES_USER: postgres
