@@ -5,11 +5,11 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DB_NAME: email_blacklists
-      DB_HOST: email_blacklists_db
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
+      RDS_DB_NAME: email_blacklists
+      RDS_HOSTNAME: email_blacklists_db
+      RDS_PORT: 5432
+      RDS_USERNAME: postgres
+      RDS_PASSWORD: postgres
     depends_on:
       email_blacklists_db:
         condition: service_healthy
