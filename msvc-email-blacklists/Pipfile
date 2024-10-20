@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "email-blacklists"
+
+[packages]
+flask = "==1.1.*"
+flask-sqlalchemy = "*"
+markupsafe = "==2.0.1"
+sqlalchemy = "*"
+flask-restful = "*"
+flask-marshmallow = "*"
+flask-jwt-extended = "*"
+werkzeug = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
