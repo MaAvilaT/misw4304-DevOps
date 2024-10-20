@@ -18,6 +18,8 @@ phases:
       - echo "Instalando dependencias del proyecto con Pipenv..."
       - cd msvc-email-blacklists  # Cambiamos al directorio del proyecto
       - pipenv install --dev  # Instalamos todas las dependencias, incluyendo las de desarrollo
+      - echo "Configurando la variable FLASK_APP..."
+      - export FLASK_APP=src/app.py  # Apunta a tu archivo principal Flask
 
   build:
     commands:
