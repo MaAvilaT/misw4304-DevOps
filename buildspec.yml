@@ -7,9 +7,11 @@ phases:
     commands:
       - echo "Actualizando e instalando herramientas del sistema..."
       - yum update -y  # yum es el gestor de Amazon Linux
-      - yum install -y python3-pip python3-venv # Instalamos Python y pip
-      - pip install --upgrade pip
-      - pip install pipenv  # Instalamos Pipenv
+      - yum install -y python3 python3-devel gcc  # Instalamos Python y herramientas de compilación
+      - python3 -m ensurepip  # Aseguramos que pip esté instalado
+      - pip3 install --upgrade pip
+      - echo "Instalando Pipenv y habilitando venv..."
+      - pip3 install pipenv  # Instalamos Pipenv usando pip
 
   pre_build:
     commands:
