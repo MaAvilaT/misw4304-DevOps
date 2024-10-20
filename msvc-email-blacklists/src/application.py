@@ -11,3 +11,6 @@ app.register_blueprint(management_blueprint)
 app.register_blueprint(email_blacklists_blueprint)
 
 Base.metadata.create_all(engine)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=3000)

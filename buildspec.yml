@@ -1,0 +1,37 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9  # Cambia a la versión de Python que uses
+    commands:
+      - echo "Instalando Pipenv y dependencias del sistema..."
+      - apt-get update -y
+      - apt-get install -y python3-pip python3-venv  # Instalamos pip y venv
+      - pip install --upgrade pip
+      - pip install pipenv  # Instalamos Pipenv
+
+  pre_build:
+    commands:
+      - echo "Instalando dependencias del proyecto con Pipenv..."
+      - cd msvc-email-blacklists  # Cambiamos al directorio del proyecto
+      - pipenv install --dev  # Instalamos todas las dependencias, incluyendo las de desarrollo
+      - echo "Ejecutando pruebas unitarias..."
+      - pipenv run pytest  # Ejecutamos las pruebas usando Pipenv
+
+  build:
+    commands:
+      - echo "Iniciando la aplicación Flask para pruebas..."
+      - nohup pipenv run flask run --host=0.0.0.0 &  # Ejecuta Flask en segundo plano
+      - echo "Esperando que el servidor esté activo..."
+      - sleep 5  # Da tiempo para que el servidor se inicie
+      - curl http://localhost:3000  # Verifica que el servidor esté corriendo
+
+  post_build:
+    commands:
+      - echo "Limpieza posterior a la compilación completada."
+
+artifacts:
+  files:
+    - "**/*"  # Incluye todos los archivos como artefactos
+  discard-paths: yes
