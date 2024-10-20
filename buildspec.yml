@@ -21,7 +21,7 @@ phases:
       - echo "Configurando la variable FLASK_APP..."
       - export FLASK_APP=src/app.py  # Apunta a tu archivo principal Flask
       - export RDS_DB_NAME=email_blacklists
-      - export RDS_HOSTNAME=email_blacklists_db
+      - export RDS_HOSTNAME=localhost
       - export RDS_PORT=5432
       - export RDS_USERNAME=postgres
       - export RDS_PASSWORD=postgres
