@@ -18,21 +18,11 @@ phases:
       - echo "Instalando dependencias del proyecto con Pipenv..."
       - cd msvc-email-blacklists  # Cambiamos al directorio del proyecto
       - pipenv install --dev  # Instalamos todas las dependencias, incluyendo las de desarrollo
-      - echo "Configurando la variable FLASK_APP..."
-      - export FLASK_APP=src/app.py  # Apunta a tu archivo principal Flask
-      - export RDS_DB_NAME=email_blacklists
-      - export RDS_HOSTNAME=localhost
-      - export RDS_PORT=5432
-      - export RDS_USERNAME=postgres
-      - export RDS_PASSWORD=postgres
 
   build:
     commands:
-      - echo "Iniciando la aplicación Flask para pruebas..."
-      - nohup pipenv run flask run --host=0.0.0.0 &  # Ejecuta Flask en segundo plano
-      - echo "Esperando que el servidor esté activo..."
-      - sleep 5  # Da tiempo para que el servidor se inicie
-      - curl http://localhost:3000  # Verifica que el servidor esté corriendo
+      - echo "Ejecutando pruebas unitarias..."
+      - pipenv run pytest  # Ejecutamos las pruebas unitarias
 
   post_build:
     commands:
