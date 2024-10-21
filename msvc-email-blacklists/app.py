@@ -6,12 +6,12 @@ from .blueprints.msvc_management import management_blueprint
 from .database.declarative_base import Base, engine
 
 loaded = load_dotenv('.env.development')
-application = Flask(__name__)
+app = Flask(__name__)
 
-application.register_blueprint(management_blueprint)
-application.register_blueprint(email_blacklists_blueprint)
+app.register_blueprint(management_blueprint)
+app.register_blueprint(email_blacklists_blueprint)
 
 Base.metadata.create_all(engine)
 
 if __name__ == "__main__":
-    application.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
