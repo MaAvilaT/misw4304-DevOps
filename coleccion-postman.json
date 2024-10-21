@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "1cc8db1f-fca7-48c8-9d5b-7ae6fe76df3e",
+		"name": "Entrega 1 - Devops",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34269171"
+	},
+	"item": [
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "HARDCODED_DEVELOPMENT_JWT",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"miavila@manssss.com\",\n    \"appUuid\": \"some-id\",\n    \"blockedReason\": \"feeling not like dancing like a nigga\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://misw-4304-devops-env.eba-3f6nctws.us-east-2.elasticbeanstalk.com/blacklists"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Usuario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "HARDCODED_DEVELOPMENT_JWT",
+						"type": "text"
+					}
+				],
+				"url": "http://misw-4304-devops-env.eba-3f6nctws.us-east-2.elasticbeanstalk.com/blacklists/miavila%40iso%2Ecomerce"
+			},
+			"response": []
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "HARDCODED_DEVELOPMENT_JWT",
+						"type": "text"
+					}
+				],
+				"url": "http://misw-4304-devops-env.eba-3f6nctws.us-east-2.elasticbeanstalk.com/health"
+			},
+			"response": []
+		}
+	]
+}
