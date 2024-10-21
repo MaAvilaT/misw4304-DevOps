@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from functools import wraps
 
-from ..services.authentication_service import AuthenticationService
+from services.authentication_service import AuthenticationService
 
 management_blueprint = Blueprint(name='management', import_name=__name__)
 
@@ -18,4 +18,4 @@ def token_required(f):
 
 @management_blueprint.route('/health', methods=['GET'])
 def health():
-    return jsonify(), 200
+    return '', 200
