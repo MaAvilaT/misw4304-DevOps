@@ -15,18 +15,28 @@ class FlaskAppTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, b'pong')
 
-    def test_create_email_blacklisting_success(self):
-        """Test successful creation of email blacklisting"""
+    def test_create_email_blacklisting_created(self):
+        """Test successful creation of email blacklisting with status 201"""
         data = {
-            "email": "test@example.com",
+            "email": "unique@example.com",
             "appUuid": "12345",
             "blockedReason": "spam"
         }
         response = self.client.post('/blacklists', data=json.dumps(data), content_type='application/json')
-        self.assertIn(response.status_code, [200, 201, 409])  # It can be 201 for created or 409 if already exists
+        self.assertEqual(response.status_code, 201)  # Expecting creation success
+
+    def test_create_email_blacklisting_conflict(self):
+        """Test conflict error if email already blacklisted with status 409"""
+        data = {
+            "email": "existing@example.com",  # Assume this email is already blacklisted
+            "appUuid": "12345",
+            "blockedReason": "spam"
+        }
+        response = self.client.post('/blacklists', data=json.dumps(data), content_type='application/json')
+        self.assertEqual(response.status_code, 409)  # Expecting conflict
 
     def test_create_email_blacklisting_bad_request(self):
-        """Test bad request error when missing data for email blacklisting"""
+        """Test bad request error when missing data for email blacklisting with status 400"""
         data = {
             "email": "test@example.com",
             "appUuid": "12345"
