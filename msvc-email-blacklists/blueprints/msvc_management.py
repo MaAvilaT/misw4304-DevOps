@@ -18,4 +18,4 @@ def token_required(f):
 
 @management_blueprint.route('/health', methods=['GET'])
 def health():
-    return '', 200
+    return 'pong', 200

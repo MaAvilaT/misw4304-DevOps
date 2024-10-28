@@ -2,7 +2,6 @@ from sqlalchemy.exc import IntegrityError
 from database.declarative_base import open_session
 from models.models import BlacklistedEmail
 
-
 class BlacklistedEmailService:
 
     @staticmethod
@@ -19,7 +18,7 @@ class BlacklistedEmailService:
                 session.commit()
             except IntegrityError:
                 return '', 400
-        return '', 200
+        return jsonify({'msg':'Email blacklisting was successfully created'}), 200
 
     @staticmethod
     def is_blacklisted(email):
@@ -29,4 +28,4 @@ class BlacklistedEmailService:
         if not result:
             return 'false', 200
         else:
-            return 'true', 200
+            return {'status': 'true', 'blockedReason': result.blocked_reason}, 200

@@ -23,6 +23,10 @@ def create_email_blacklisting():
 
     json_data['requestIp'] = request_ip
 
+    is_blacklisted, is_blacklisted_sta = BlacklistedEmailService.is_blacklisted(email=json_data['email'])
+    if is_blacklisted['status'] == 'true':
+        return jsonify({'msg': 'email already blacklisted'}), 409
+
     to_jsonify, status_code = BlacklistedEmailService.create_email_blacklisting(data=json_data)
     return jsonify(to_jsonify), status_code
 
