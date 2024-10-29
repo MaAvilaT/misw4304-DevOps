@@ -1,6 +1,8 @@
 import unittest
+
+from .app import app
 from flask import json
-from app import app
+
 
 class FlaskAppTests(unittest.TestCase):
 
@@ -55,6 +57,7 @@ class FlaskAppTests(unittest.TestCase):
         """Test bad request error when email is missing in blacklist check"""
         response = self.client.get('/blacklists/')
         self.assertEqual(response.status_code, 404)  # As per route requirement
+
 
 if __name__ == "__main__":
     unittest.main()

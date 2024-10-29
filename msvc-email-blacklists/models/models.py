@@ -4,7 +4,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 
-from database.declarative_base import Base
+from ..database.declarative_base import Base
 
 
 class BlacklistedEmail(Base):

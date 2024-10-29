@@ -1,4 +1,3 @@
-
 # for the source, don't even use this sh in production
 HARDCODED_DEVELOPMENT_JWT = 'HARDCODED_DEVELOPMENT_JWT'
 

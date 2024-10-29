@@ -1,8 +1,10 @@
 from flask import Flask
 
-from blueprints.msvc_email_blacklists import email_blacklists_blueprint
-from blueprints.msvc_management import management_blueprint
-from database.declarative_base import Base, engine
+# FIXME 1: Fix the imports to works in AWS
+
+from .blueprints.msvc_email_blacklists import email_blacklists_blueprint
+from .blueprints.msvc_management import management_blueprint
+from .database.declarative_base import Base, engine
 
 app = Flask(__name__)
 
