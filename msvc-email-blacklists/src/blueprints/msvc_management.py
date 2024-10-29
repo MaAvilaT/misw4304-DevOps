@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from functools import wraps
 
-from ..services.authentication_service import AuthenticationService
+from src.services.authentication_service import AuthenticationService
 
 management_blueprint = Blueprint(name='management', import_name=__name__)
 

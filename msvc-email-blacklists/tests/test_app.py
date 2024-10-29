@@ -1,14 +1,15 @@
 import unittest
 
-from .app import app
 from flask import json
+
+from src.app import app as application
 
 
 class FlaskAppTests(unittest.TestCase):
 
     @classmethod
-    def setUpClass(cls):
-        cls.app = app
+    def setUp(cls):
+        cls.app = application
         cls.client = cls.app.test_client()
 
     def test_health_route(self):
