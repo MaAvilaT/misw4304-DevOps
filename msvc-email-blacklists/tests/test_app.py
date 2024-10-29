@@ -1,16 +1,14 @@
 import unittest
-
-from flask import json
-
+import json
 from src.app import app as application
-
 
 class FlaskAppTests(unittest.TestCase):
 
     @classmethod
-    def setUp(cls):
+    def setUpClass(cls):
         cls.app = application
         cls.client = cls.app.test_client()
+        cls.valid_token = "HARDCODED_DEVELOPMENT_JWT"  # Ensure this token is valid
 
     def test_health_route(self):
         """Test the /health route"""
@@ -25,7 +23,7 @@ class FlaskAppTests(unittest.TestCase):
             "appUuid": "12345",
             "blockedReason": "spam"
         }
-        response = self.client.post('/blacklists', data=json.dumps(data), content_type='application/json')
+        response = self.client.post('/blacklists', data=json.dumps(data), content_type='application/json', headers={'Authorization': f'Bearer {self.valid_token}'})
         self.assertEqual(response.status_code, 201)  # Expecting creation success
 
     def test_create_email_blacklisting_conflict(self):
@@ -35,7 +33,7 @@ class FlaskAppTests(unittest.TestCase):
             "appUuid": "12345",
             "blockedReason": "spam"
         }
-        response = self.client.post('/blacklists', data=json.dumps(data), content_type='application/json')
+        response = self.client.post('/blacklists', data=json.dumps(data), content_type='application/json', headers={'Authorization': f'Bearer {self.valid_token}'})
         self.assertEqual(response.status_code, 409)  # Expecting conflict
 
     def test_create_email_blacklisting_bad_request(self):
@@ -44,21 +42,20 @@ class FlaskAppTests(unittest.TestCase):
             "email": "test@example.com",
             "appUuid": "12345"
         }
-        response = self.client.post('/blacklists', data=json.dumps(data), content_type='application/json')
+        response = self.client.post('/blacklists', data=json.dumps(data), content_type='application/json', headers={'Authorization': f'Bearer {self.valid_token}'})
         self.assertEqual(response.status_code, 400)
         self.assertIn(b'bad request', response.data)
 
     def test_is_blacklisted_success(self):
         """Test successful check if email is blacklisted"""
         email = "test@example.com"
-        response = self.client.get(f'/blacklists/{email}')
+        response = self.client.get(f'/blacklists/{email}', headers={'Authorization': f'Bearer {self.valid_token}'})
         self.assertIn(response.status_code, [200, 404])
 
     def test_is_blacklisted_bad_request(self):
         """Test bad request error when email is missing in blacklist check"""
-        response = self.client.get('/blacklists/')
+        response = self.client.get('/blacklists/', headers={'Authorization': f'Bearer {self.valid_token}'})
         self.assertEqual(response.status_code, 404)  # As per route requirement
-
 
 if __name__ == "__main__":
     unittest.main()
