@@ -27,7 +27,7 @@ phases:
       - echo "Building Docker image..."
       - docker build -t devil-ops .  # Build Docker image
       - echo "Logging in to Amazon ECR..."
-      - $(aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 911167914667.dkr.ecr.us-east-2.amazonaws.com)  # Authenticate with ECR
+      - $(aws ecr get-login --no-include-email --region  us-east-2)  # Authenticate with ECR
       - echo "Tagging Docker image..."
       - docker tag devil-ops:latest 911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest  # Tag the image
       - echo "Pushing Docker image to ECR..."
