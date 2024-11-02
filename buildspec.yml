@@ -3,32 +3,39 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.9  # Cambia a la versión de Python que uses
+      python: 3.9  # Change to the Python version you use
     commands:
-      - echo "Actualizando e instalando herramientas del sistema..."
-      - yum update -y  # yum es el gestor de Amazon Linux
-      - yum install -y python3 python3-devel gcc  # Instalamos Python y herramientas de compilación
-      - python3 -m ensurepip  # Aseguramos que pip esté instalado
+      - echo "Updating and installing system tools..."
+      - yum update -y  # yum is the package manager for Amazon Linux
+      - yum install -y python3 python3-devel gcc  # Install Python and build tools
+      - python3 -m ensurepip  # Ensure pip is installed
       - pip3 install --upgrade pip
-      - echo "Instalando Pipenv y habilitando venv..."
-      - pip3 install pipenv  # Instalamos Pipenv usando pip
+      - echo "Installing dependencies using pip..."
+      - pip3 install -r requirements.txt  # Install dependencies from requirements.txt
 
   pre_build:
     commands:
-      - echo "Instalando dependencias del proyecto con Pipenv..."
-      - cd msvc-email-blacklists  # Cambiamos al directorio del proyecto
-      - pipenv install --dev  # Instalamos todas las dependencias, incluyendo las de desarrollo
+      - echo "Installing project dependencies..."
+      - cd msvc-email-blacklists  # Change to the project directory
+      - pip3 install -r requirements-dev.txt  # Install development dependencies
 
   build:
     commands:
-      - echo "Ejecutando pruebas unitarias..."
-      - pipenv run pytest # Ejecutamos las pruebas unitarias
+      - echo "Running unit tests..."
+      - pytest  # Run unit tests
 
   post_build:
     commands:
-      - echo "Limpieza posterior a la compilación completada."
+      - echo "Building Docker image..."
+      - docker build -t devil-ops .  # Build Docker image
+      - echo "Logging in to Amazon ECR..."
+      - $(aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 911167914667.dkr.ecr.us-east-2.amazonaws.com)  # Authenticate with ECR
+      - echo "Tagging Docker image..."
+      - docker tag devil-ops:latest 911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest  # Tag the image
+      - echo "Pushing Docker image to ECR..."
+      - docker push 911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest  # Push the image to ECR
 
 artifacts:
   files:
-    - "**/*"  # Incluye todos los archivos como artefactos
+    - "**/*"  # Include all files as artifacts
   discard-paths: yes
