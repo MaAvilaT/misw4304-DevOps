@@ -9,15 +9,13 @@ phases:
       - yum update -y  # yum is the package manager for Amazon Linux
       - yum install -y python3 python3-devel gcc  # Install Python and build tools
       - python3 -m ensurepip  # Ensure pip is installed
-      - pip3 install --upgrade pip
-      - echo "Installing dependencies using pip..."
-      - pip3 install -r requirements.txt  # Install dependencies from requirements.txt
+      - pip3 install --upgrade pip  # Upgrade pip
 
   pre_build:
     commands:
       - echo "Installing project dependencies..."
       - cd msvc-email-blacklists  # Change to the project directory
-      - pip3 install -r requirements-dev.txt  # Install development dependencies
+      - pip3 install -r requirements.txt  # Install development dependencies
 
   build:
     commands:
