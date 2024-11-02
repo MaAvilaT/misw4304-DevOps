@@ -5,7 +5,6 @@ services:
     ports:
       - "3000:3000"
     environment:
-      FLASK_APP: src.app:app
       RDS_DB_NAME: email_blacklists
       RDS_HOSTNAME: email_blacklists_db
       RDS_PORT: 5432
