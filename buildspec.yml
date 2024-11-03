@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.9  # Change to the Python version you use
+      python: 3.12  # Change to the Python version you use
     commands:
       - echo "Updating and installing system tools..."
       - yum update -y  # yum is the package manager for Amazon Linux
@@ -36,4 +36,4 @@ phases:
 artifacts:
   files:
     - "**/*"  # Include all files as artifacts
-  discard-paths: yes
+  discard-paths: no
