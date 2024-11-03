@@ -36,4 +36,5 @@ phases:
 artifacts:
   files:
     - "msvc-email-blacklists/**/*"  # Include all files as artifacts
+  base-directory: "msvc-email-blacklists"
   discard-paths: no
