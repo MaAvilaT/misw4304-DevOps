@@ -1,8 +1,9 @@
 import pytest
 from flask import Flask
 
-from src.blueprints.msvc_management import management_blueprint, token_required
-from src.services.authentication_service import AuthenticationService
+from msvc_email_blacklists.src.blueprints.msvc_management import management_blueprint, token_required
+from msvc_email_blacklists.src.services.authentication_service import AuthenticationService
+
 
 # Mock the AuthenticationService for testing
 class MockAuthenticationService:
@@ -10,8 +11,10 @@ class MockAuthenticationService:
     def is_valid_jwt(jwt):
         return jwt == "valid_token"
 
+
 # Apply the mock
 AuthenticationService.is_valid_jwt = MockAuthenticationService.is_valid_jwt
+
 
 @pytest.fixture
 def client():
@@ -20,10 +23,12 @@ def client():
     with app.test_client() as client:
         yield client
 
+
 def test_health_endpoint(client):
     response = client.get('/health')
     assert response.status_code == 200
     assert response.data == b'pong'
+
 
 def test_token_required_decorator(client):
     @token_required

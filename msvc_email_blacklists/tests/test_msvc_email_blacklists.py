@@ -1,8 +1,8 @@
 import pytest
 from flask import Flask, json
 
-from src.blueprints.msvc_email_blacklists import email_blacklists_blueprint
-from src.services.email_blacklisting_service import BlacklistedEmailService
+from msvc_email_blacklists.src.blueprints.msvc_email_blacklists import email_blacklists_blueprint
+from msvc_email_blacklists.src.services.email_blacklisting_service import BlacklistedEmailService
 
 
 # Mock the BlacklistedEmailService for testing
@@ -38,7 +38,8 @@ def test_create_email_blacklisting_missing_data(client):
         "email": "test@example.com",
         "appUuid": "12345"
     }
-    response = client.post('/blacklists', data=json.dumps(data), content_type='application/json', headers={'Authorization': 'valid_token'})
+    response = client.post('/blacklists', data=json.dumps(data), content_type='application/json',
+                           headers={'Authorization': 'valid_token'})
     assert response.status_code == 400
     assert b'bad request' in response.data
 
@@ -49,7 +50,8 @@ def test_create_email_blacklisting_valid_request(client):
         "appUuid": "12345",
         "blockedReason": "spam"
     }
-    response = client.post('/blacklists', data=json.dumps(data), content_type='application/json', headers={'Authorization': 'valid_token'})
+    response = client.post('/blacklists', data=json.dumps(data), content_type='application/json',
+                           headers={'Authorization': 'valid_token'})
     assert response.status_code == 201
     assert b'email blacklisted successfully' in response.data
 
@@ -60,7 +62,8 @@ def test_create_email_blacklisting_already_blacklisted(client):
         "appUuid": "12345",
         "blockedReason": "spam"
     }
-    response = client.post('/blacklists', data=json.dumps(data), content_type='application/json', headers={'Authorization': 'valid_token'})
+    response = client.post('/blacklists', data=json.dumps(data), content_type='application/json',
+                           headers={'Authorization': 'valid_token'})
     assert response.status_code == 409
     assert b'email already blacklisted' in response.data
 
