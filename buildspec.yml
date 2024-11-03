@@ -14,7 +14,7 @@ phases:
   pre_build:
     commands:
       - echo "Installing project dependencies..."
-      - cd msvc-email-blacklists  # Change to the project directory
+      - cd msvc_email_blacklists  # Change to the project directory
       - pip3 install -r requirements.txt  # Install development dependencies
 
   build:
@@ -35,6 +35,5 @@ phases:
 
 artifacts:
   files:
-    - "msvc-email-blacklists/**/*"  # Include all files as artifacts
-  base-directory: "msvc-email-blacklists"
+    - "msvc_email_blacklists/**/*"  # Include all files as artifacts
   discard-paths: no
