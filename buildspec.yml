@@ -35,5 +35,5 @@ phases:
 
 artifacts:
   files:
-    - "**/*"  # Include all files as artifacts
+    - "/msvc"  # Include all files as artifacts
   discard-paths: no
