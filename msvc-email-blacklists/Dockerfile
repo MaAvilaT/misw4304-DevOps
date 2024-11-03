@@ -10,6 +10,9 @@ RUN dnf install -vy python3 python3-pip libpq-devel python-devel postgresql-deve
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
-ENV FLASK_APP=app.py
+RUN pip install gunicorn
 
-ENTRYPOINT [ "flask", "run", "--host", "0.0.0.0", "--port", "3000" ]
+ENV FLASK_APP=/app/src/app.py
+
+# Use Gunicorn to serve the application
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:3000", "src.app:app"]
