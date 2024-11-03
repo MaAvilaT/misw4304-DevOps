@@ -1,8 +1,8 @@
 from flask import Flask
 
-from src.blueprints.msvc_email_blacklists import email_blacklists_blueprint
-from src.blueprints.msvc_management import management_blueprint
-from src.database.declarative_base import Base, engine
+from blueprints.msvc_email_blacklists import email_blacklists_blueprint
+from blueprints.msvc_management import management_blueprint
+from database.declarative_base import Base, engine
 
 app = Flask(__name__)
 
