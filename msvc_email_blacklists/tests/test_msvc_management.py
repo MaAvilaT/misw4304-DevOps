@@ -1,7 +1,8 @@
 import pytest
 from flask import Flask
-from blueprints.msvc_management import management_blueprint, token_required
-from services.authentication_service import AuthenticationService
+
+from src.blueprints.msvc_management import management_blueprint, token_required
+from src.services.authentication_service import AuthenticationService
 
 # Mock the AuthenticationService for testing
 class MockAuthenticationService:
