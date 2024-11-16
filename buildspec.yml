@@ -28,8 +28,8 @@ phases:
 artifacts:
   files:
     - "msvc_email_blacklists/**/*"  # Include all files as artifacts
-    - imageDefinitions.json
-    - imageDetail.json
+    - "msvc_email_blacklists/imageDefinitions.json"
+    - "msvc_email_blacklists/imageDetail.json"
   secondary-artifacts:
     DefinitionArtifact:
       files:
