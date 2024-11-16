@@ -15,4 +15,4 @@ RUN pip install gunicorn
 ENV FLASK_APP=/app/src/app.py
 
 # Use Gunicorn to serve the application
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:3000", "src.app:app"]
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:5000", "src.app:app"]
