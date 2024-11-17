@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 
 # Add the root directory of the project to PYTHONPATH
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -8,7 +8,6 @@ from flask import Flask
 from blueprints.msvc_email_blacklists import email_blacklists_blueprint
 from blueprints.msvc_management import management_blueprint
 from database.declarative_base import Base, engine
-
 
 app = Flask(__name__)
 
