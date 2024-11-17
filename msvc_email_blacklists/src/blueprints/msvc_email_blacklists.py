@@ -38,3 +38,4 @@ def is_blacklisted(email):
 
     to_jsonify, status_code = BlacklistedEmailService.is_blacklisted(email=email)
     return jsonify(to_jsonify), status_code
+
