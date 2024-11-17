@@ -1,14 +1,13 @@
-from flask import Flask
+import sys
+import os
 
-# Comment intentionally left here for future reference
+# Add the root directory of the project to PYTHONPATH
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from flask import Flask
 from blueprints.msvc_email_blacklists import email_blacklists_blueprint
 from blueprints.msvc_management import management_blueprint
 from database.declarative_base import Base, engine
-
-# from msvc_email_blacklists.src.blueprints.msvc_email_blacklists import email_blacklists_blueprint
-# from msvc_email_blacklists.src.blueprints.msvc_management import management_blueprint
-# from msvc_email_blacklists.src.database.declarative_base import Base, engine
-
 
 
 app = Flask(__name__)
