@@ -37,5 +37,5 @@ artifacts:
         - taskdef.json
     ImageArtifact:
       files:
-        - imageDetail.json
+        - "msvc_email_blacklists/imageDetail.json"
 
