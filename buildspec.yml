@@ -27,7 +27,7 @@ phases:
 
 artifacts:
   files:
-    - 'msvc_email_blacklists/**/*'  # Include all files as artifacts
+    - '**/*'  # Include all files as artifacts
     - imagedefinitions.json
     - imageDetail.json
   secondary-artifacts:

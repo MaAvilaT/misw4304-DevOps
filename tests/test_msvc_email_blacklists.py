@@ -2,7 +2,7 @@ import pytest
 from flask import Flask, json
 
 from msvc_email_blacklists.src.blueprints.msvc_email_blacklists import email_blacklists_blueprint
-from msvc_email_blacklists.src.services.email_blacklisting_service import BlacklistedEmailService
+from src.services.email_blacklisting_service import BlacklistedEmailService
 
 
 # Mock the BlacklistedEmailService for testing
