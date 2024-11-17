@@ -34,8 +34,8 @@ artifacts:
   secondary-artifacts:
     DefinitionArtifact:
       files:
-        - msvc_email_blacklists/appspec.yaml
-        - msvc_email_blacklists/taskdef.json
+        - appspec.yaml
+        - taskdef.json
     ImageArtifact:
       files:
-        - msvc_email_blacklists/imageDetail.json
+        - imageDetail.json
