@@ -31,11 +31,12 @@ artifacts:
     - 'msvc_email_blacklists/image*.json'  # Include the image details file
     - 'msvc_email_blacklists/appspec.yaml'
     - 'msvc_email_blacklists/taskdef.json'
+  discard-paths: yes  # Discard the paths to the files
   secondary-artifacts:
     DefinitionArtifact:
       files:
-        - appspec.yaml
-        - taskdef.json
+        - msvc_email_blacklists/appspec.yaml
+        - msvc_email_blacklists/taskdef.json
     ImageArtifact:
       files:
-        - imageDetail.json
+        - msvc_email_blacklists/imageDetail.json
