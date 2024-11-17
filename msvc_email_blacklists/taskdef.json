@@ -9,7 +9,6 @@
             "containerPort": 5000
           }
         ],
-
         "image": "<IMAGE1_NAME>",
         "essential": true,
         "name": "devilops-container"
