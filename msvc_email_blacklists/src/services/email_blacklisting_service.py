@@ -1,7 +1,7 @@
 from sqlalchemy.exc import IntegrityError
 
-from msvc_email_blacklists.src.database.declarative_base import open_session
-from msvc_email_blacklists.src.models.models import BlacklistedEmail
+from database.declarative_base import open_session
+from models.models import BlacklistedEmail
 
 
 class BlacklistedEmailService:
