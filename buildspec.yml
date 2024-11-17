@@ -30,6 +30,8 @@ artifacts:
     - artifacts:
         files:
           - "**/*"
+          - imagedefinitions.json
+          - imageDetail.json
         base-directory: msvc_email_blacklists  # Ensure this matches your build output folder
   secondary-artifacts:
     DefinitionArtifact:
