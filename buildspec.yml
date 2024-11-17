@@ -21,9 +21,9 @@ phases:
       - echo "Pushing Docker image to ECR..."
       - docker push 911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest  # Push the image to ECR
       - echo "Writing Images Definitions file..."
-      - printf '[{"name":"devilops-container","imageUri":"911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest"}]' > imageDefinitions.json
+      - printf '[{"name":"devilops-container","imageUri":"911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest"}]' > imagedefinitions.json
       - printf '{"ImageURI":"911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest"}' > imageDetail.json
-      - cat imageDefinitions.json
+      - cat imagedefinitions.json
 
 artifacts:
   files:
