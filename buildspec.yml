@@ -20,7 +20,6 @@ phases:
       - echo "Build completed on `date`"
       - echo "Pushing Docker image to ECR..."
       - docker push 911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest  # Push the image to ECR
-      - pwd
       - echo "Writing Images Definitions file..."
       - printf '[{"name":"devilops-container","imageUri":"911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest"}]' > imagedefinitions.json
       - printf '{"ImageURI":"911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest"}' > imageDetail.json
@@ -31,6 +30,8 @@ artifacts:
     - 'msvc_email_blacklists/**/*'  # Include all files as artifacts
     - msvc_email_blacklists/imagedefinitions.json
     - msvc_email_blacklists/imageDetail.json
+    - msvc_email_blacklists/appspec.json
+    - msvc_email_blacklists/taskdef.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
