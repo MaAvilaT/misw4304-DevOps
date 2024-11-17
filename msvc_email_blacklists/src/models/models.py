@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 
 from msvc_email_blacklists.src.database.declarative_base import Base
-
+# from ..database.declarative_base import Base
 
 class BlacklistedEmail(Base):
     __tablename__ = 'blacklisted_email'

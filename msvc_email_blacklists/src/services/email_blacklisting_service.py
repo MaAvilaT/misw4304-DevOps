@@ -1,4 +1,3 @@
-from flask import jsonify
 from sqlalchemy.exc import IntegrityError
 
 from msvc_email_blacklists.src.database.declarative_base import open_session
