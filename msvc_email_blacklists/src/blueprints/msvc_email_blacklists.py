@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 
 from services.email_blacklisting_service import BlacklistedEmailService
-from msvc_management import token_required
+from blueprints.msvc_management import token_required
 
 email_blacklists_blueprint = Blueprint(name='msvc_email_blacklists', import_name=__name__)
 
