@@ -22,14 +22,10 @@ phases:
       - docker push 911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest  # Push the image to ECR
       - echo "Writing Images Definitions file..."
       - printf '{"ImageURI":"911167914667.dkr.ecr.us-east-2.amazonaws.com/devil-ops:latest"}' > imageDetail.json
-      - cat imagedefinitions.json
 
 artifacts:
   files:
     - 'msvc_email_blacklists/**/*'  # Include all files as artifacts
-    - msvc_email_blacklists/imageDetail.json
-    - msvc_email_blacklists/appspec.yaml
-    - msvc_email_blacklists/taskdef.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
