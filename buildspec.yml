@@ -30,5 +30,12 @@ artifacts:
     - 'msvc_email_blacklists/**/*'  # Include all files as artifacts
     - msvc_email_blacklists/imagedefinitions.json
     - msvc_email_blacklists/imageDetail.json
-
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imageDetail.json
 
