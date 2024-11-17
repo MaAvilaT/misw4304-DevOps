@@ -27,19 +27,14 @@ phases:
 
 artifacts:
   files:
-    - artifacts:
-        files:
-          - "**/*"
-          - imagedefinitions.json
-          - imageDetail.json
-        base-directory: msvc_email_blacklists  # Ensure this matches your build output folder
+    - 'msvc_email_blacklists/**/*'  # Include all files as artifacts
+    - msvc_email_blacklists/imagedefinitions.json
+    - msvc_email_blacklists/imageDetail.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
-        - appspec.yaml
-        - taskdef.json
-      base-directory: msvc_email_blacklists  # Ensure this matches your build output folder
+        - msvc_email_blacklists/appspec.yaml
+        - msvc_email_blacklists/taskdef.json
     ImageArtifact:
       files:
-        - imageDetail.json
-      base-directory: msvc_email_blacklists  # Ensure this matches your build output folder
+        - msvc_email_blacklists/imageDetail.json
