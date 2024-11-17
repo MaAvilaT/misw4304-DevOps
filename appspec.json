@@ -5,7 +5,7 @@
       "TargetService": {
         "Type": "AWS::ECS::Service",
         "Properties": {
-          "TaskDefinition": "<TASK_DEFINITION>",
+          "TaskDefinition": "arn:aws:ecs:us-east-2:911167914667:task-definition/task-devilops:1",
           "LoadBalancerInfo": {
             "ContainerName": "devilops-container",
             "ContainerPort": 5000
