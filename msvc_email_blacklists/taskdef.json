@@ -18,28 +18,36 @@
           "value": "1653a7c83fbce0c72ac4aa35a093bb62FFFFNRAL"
         },
         {
-          "name": "RDS_DB_NAME",
+          "name": "DATABASE_NAME",
           "value": "email_blacklists"
         },
         {
-          "name": "RDS_HOSTNAME",
-          "value": "email-blacklists-db.cfgiqkg8g43y.us-east-2.rds.amazonaws.com"
+          "name": "DATABASE_HOST",
+          "value": "email-blacklists-instance.cfgiqkg8g43y.us-east-2.rds.amazonaws.com"
         },
         {
-          "name": "RDS_PORT",
+          "name": "DATABASE_PORT",
           "value": "5432"
         },
         {
-          "name": "RDS_USERNAME",
+          "name": "DATABASE_USER",
           "value": "postgres"
         },
         {
-          "name": "RDS_PASSWORD",
+          "name": "DATABASE_PASSWORD",
           "value": "vpbPBq5z<eyNC4;%3-M7U2"
         }
       ]
     }
   ],
+  "logConfiguration": {
+    "logDriver": "awslogs",
+    "options": {
+      "awslogs-group": "/ecs/task-devilops",
+      "awslogs-region": "us-east-2",
+      "awslogs-stream-prefix": "ecs"
+    }
+  },
   "requiresCompatibilities": [
     "FARGATE"
   ],
