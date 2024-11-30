@@ -1,7 +1,7 @@
 services:
   email_blacklists:
-    build: msvc-email-blacklists/
-    image: msvc-email-blacklists:v1.0.0
+    build: msvc_email_blacklists/
+    image: msvc_email_blacklists:v1.0.0
     ports:
       - "5000:5000"
     environment:
@@ -10,6 +10,7 @@ services:
       RDS_PORT: 5432
       RDS_USERNAME: postgres
       RDS_PASSWORD: postgres
+      NEW_RELIC_LICENSE_KEY: 1653a7c83fbce0c72ac4aa35a093bb62FFFFNRAL
     depends_on:
       email_blacklists_db:
         condition: service_healthy

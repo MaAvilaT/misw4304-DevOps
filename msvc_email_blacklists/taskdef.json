@@ -11,7 +11,13 @@
         ],
         "image": "<IMAGE1_NAME>",
         "essential": true,
-        "name": "devilops-container"
+        "name": "devilops-container",
+        "environment": [
+          {
+            "name": "NEW_RELIC_LICENSE_KEY",
+            "value": "1653a7c83fbce0c72ac4aa35a093bb62FFFFNRAL"
+          }
+        ]
       }
     ],
     "requiresCompatibilities": [
