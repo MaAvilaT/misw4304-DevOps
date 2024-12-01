@@ -37,17 +37,7 @@
           "name": "DATABASE_PASSWORD",
           "value": "vpbPBq5z<eyNC4;%3-M7U2"
         }
-      ],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-create-group": "true",
-          "awslogs-group": "awslogs-devilops",
-          "awslogs-region": "us-east-2",
-          "awslogs-stream-prefix": "awslogs-devilops",
-          "awslogs-multiline-pattern": "\"^[|DEBUG|INFO|WARNING|ERROR\""
-        }
-      }
+      ]
     }
   ],
   "requiresCompatibilities": [
