@@ -25,5 +25,5 @@ ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true
 ENV NEW_RELIC_LICENSE_KEY=1653a7c83fbce0c72ac4aa35a093bb62FFFFNRAL
 ENV NEW_RELIC_LOG_LEVEL=info
 
-# Use New Relic to run the application
+# Use New Relic to run the application with gunicorn
 ENTRYPOINT ["newrelic-admin", "run-program", "gunicorn", "--bind", "0.0.0.0:5000", "src.app:app"]
