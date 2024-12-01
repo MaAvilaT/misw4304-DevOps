@@ -1,22 +1,20 @@
-FROM fedora:37
+FROM fedora:40
 
 WORKDIR /app
 
 COPY . /app/
 
 # Update the package manager and install necessary packages
-RUN dnf update -y && \
-    dnf install -y python3 python3-pip libpq-devel python3-devel postgresql-devel gcc gcc-c++
+RUN dnf update -vy && \
+    dnf install -vy python3 python3-pip libpq-devel python3-devel postgresql-devel gcc gcc-c++
 
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
-# Install the New Relic Python agent and gunicorn
-RUN pip install --no-cache-dir newrelic gunicorn
+# Install gunicorn and newrelic
+RUN pip install gunicorn newrelic
 
 ENV FLASK_APP=/app/src/app.py
-
-EXPOSE 5000
 
 # Set New Relic environment variables
 ENV NEW_RELIC_APP_NAME="msvc_email_blacklists"

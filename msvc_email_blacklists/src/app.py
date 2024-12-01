@@ -17,8 +17,13 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(nam
 app.register_blueprint(management_blueprint)
 app.register_blueprint(email_blacklists_blueprint)
 
-Base.metadata.create_all(engine)
+try:
+    app.logger.info('Creating tables')
+    Base.metadata.create_all(engine)
+except Exception as e:
+    app.logger.error(f'Failed to create tables {e}', exc_info=True)
 
+app.logger.info('Tables created')
 
 @app.route('/')
 def hello():
