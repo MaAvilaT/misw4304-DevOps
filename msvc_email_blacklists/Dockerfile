@@ -11,8 +11,8 @@ RUN dnf update -y && \
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
-# Install the New Relic Python agent
-RUN pip install --no-cache-dir newrelic
+# Install the New Relic Python agent and gunicorn
+RUN pip install --no-cache-dir newrelic gunicorn
 
 ENV FLASK_APP=/app/src/app.py
 
@@ -26,4 +26,4 @@ ENV NEW_RELIC_LICENSE_KEY=1653a7c83fbce0c72ac4aa35a093bb62FFFFNRAL
 ENV NEW_RELIC_LOG_LEVEL=info
 
 # Use New Relic to run the application
-ENTRYPOINT [ "newrelic-admin", "run-program", "python3", "src/app.py" ]
+ENTRYPOINT ["newrelic-admin", "run-program", "gunicorn", "--bind", "0.0.0.0:5000", "src.app:app"]
