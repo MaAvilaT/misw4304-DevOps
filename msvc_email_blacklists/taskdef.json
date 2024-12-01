@@ -45,7 +45,7 @@
     "options": {
       "awslogs-group": "/ecs/task-devilops",
       "awslogs-region": "us-east-2",
-      "awslogs-stream-prefix": "do",
+      "awslogs-stream-prefix": "ecs",
       "awslogs-multiline-pattern": "\"^[|DEBUG|INFO|WARNING|ERROR\""
     }
   },
