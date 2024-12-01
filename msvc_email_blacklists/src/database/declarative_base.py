@@ -1,8 +1,12 @@
 import os
+import logging
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
 db_user = os.environ.get('DATABASE_USER')
 db_password = os.environ.get('DATABASE_PASSWORD')
@@ -24,4 +28,5 @@ Base = declarative_base()
 
 
 def open_session():
+    logging.debug('Opening session')
     return Session()

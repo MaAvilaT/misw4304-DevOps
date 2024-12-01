@@ -13,20 +13,20 @@ class BlacklistedEmailService:
     @staticmethod
     def create_email_blacklisting(data):
         logging.debug(f'Creating email blacklisting with data: {data}')
-        with open_session() as session:
-            try:
-                blacklisted_email = BlacklistedEmail(
-                    email=data['email'],
-                    app_uuid=data['appUuid'],
-                    blocked_reason=data['blockedReason'],
-                    request_ip=data['requestIp']
-                )
-                session.add(blacklisted_email)
-                session.commit()
-                logging.info(f'Email blacklisted successfully: {data["email"]}')
-            except IntegrityError as e:
-                logging.error(f'IntegrityError while blacklisting email: {e}')
-                return '', 400
+        # with open_session() as session:
+        #     try:
+        #         blacklisted_email = BlacklistedEmail(
+        #             email=data['email'],
+        #             app_uuid=data['appUuid'],
+        #             blocked_reason=data['blockedReason'],
+        #             request_ip=data['requestIp']
+        #         )
+        #         session.add(blacklisted_email)
+        #         session.commit()
+        #         logging.info(f'Email blacklisted successfully: {data["email"]}')
+        #     except IntegrityError as e:
+        #         logging.error(f'IntegrityError while blacklisting email: {e}')
+        #         return '', 400
         return {'msg': 'Email blacklisting was successfully created'}, 200
 
     @staticmethod
