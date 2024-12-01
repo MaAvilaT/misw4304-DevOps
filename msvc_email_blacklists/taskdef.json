@@ -43,9 +43,10 @@
   "logConfiguration": {
     "logDriver": "awslogs",
     "options": {
-      "awslogs-group": "/ecs/task-devilops",
+      "awslogs-create-group": "true",
+      "awslogs-group": "awslogs-devilops",
       "awslogs-region": "us-east-2",
-      "awslogs-stream-prefix": "ecs",
+      "awslogs-stream-prefix": "awslogs-devilops",
       "awslogs-multiline-pattern": "\"^[|DEBUG|INFO|WARNING|ERROR\""
     }
   },
